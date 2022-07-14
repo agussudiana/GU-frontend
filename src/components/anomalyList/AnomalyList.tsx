@@ -14,13 +14,13 @@ export const AnomalyList = () => {
 
   return (
     <>
-      <Box sx={{ maxHeight: "90vh", overflowY: "auto" }}>
+      <div className={"audio-list"}>
         {data &&
           data.length > 0 &&
           data.map((anomaly: any, index: number) => {
             return <AnomalyItem key={index} value={anomaly} />;
           })}
-      </Box>
+      </div>
     </>
   );
 };

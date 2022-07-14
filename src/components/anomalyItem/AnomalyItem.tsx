@@ -4,12 +4,19 @@ import {
   CardMedia,
   CardContent,
   Typography,
+  Grid,
+  Chip,
 } from "@mui/material";
-import React from "react";
 import { useAnomalyContext } from "../../hooks/useAnomalyContext";
+import { timestampToDate } from "../../utils/helper";
 
 type Props = {
   value: any;
+};
+const setColorChip = (anomaly: string) => {
+  if (anomaly === "Severe") return "error";
+  if (anomaly === "Moderate") return "warning";
+  if (anomaly === "Mild") return "info";
 };
 export const AnomalyItem = ({ value }: Props) => {
   const { setAnomaly } = useAnomalyContext();
@@ -21,13 +28,40 @@ export const AnomalyItem = ({ value }: Props) => {
     <Card sx={{ maxWidth: 345, m: 1 }}>
       <CardActionArea onClick={handleClick}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          <Grid container>
+            <Grid item xs={1}>
+              <div className="anomaly-status-dot"></div>
+            </Grid>
+            <Grid item xs={11}>
+              <Typography variant="caption" component={"div"}>
+                ID #{value._id.slice(-5)}
+              </Typography>
+              <Typography
+                variant="caption"
+                component={"div"}
+                sx={{ fontWeight: "bold" }}
+              >
+                {value.reason ? value.reason.reason : "Unknown Anomaly"}
+              </Typography>
+              <Typography variant="caption" component={"div"}>
+                Detected at {timestampToDate(value.timestamp)}
+              </Typography>
+              <Typography
+                variant="caption"
+                component={"div"}
+                sx={{ color: "#3478FC" }}
+              >
+                {value.machine.name}
+              </Typography>
+
+              <Chip
+                size="small"
+                label={value.anomaly}
+                color={setColorChip(value.anomaly)}
+                sx={{ position: "absolute", top: "10px", right: "10px" }}
+              />
+            </Grid>
+          </Grid>
         </CardContent>
       </CardActionArea>
     </Card>

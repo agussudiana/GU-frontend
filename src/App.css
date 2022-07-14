@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+audio{
+  margin: 20px 0;
+}
+
+.spec-labels{
+  position: absolute !important;
+}
+
+.audio-list {
+
+  max-height: 90vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+}
+
+.audio-list::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.anomaly-status-dot{
+  margin-top: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3478FC;
+}

@@ -17,7 +17,6 @@ export const MachineSelector = () => {
   return (
     <>
       <Select
-        fullWidth
         value={machine}
         label="Machine"
         onChange={handleChange}
