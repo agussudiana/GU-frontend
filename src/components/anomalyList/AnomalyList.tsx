@@ -1,4 +1,4 @@
-import { Box, Chip, Divider, IconButton } from "@mui/material";
+import { Box, Chip, Divider, IconButton, LinearProgress } from "@mui/material";
 import { useAnomaly } from "../../hooks/useAnomaly";
 import { useMachineContext } from "../../hooks/useMachineContext";
 import { AnomalyItem } from "../anomalyItem/AnomalyItem";
@@ -32,6 +32,7 @@ export const AnomalyList = () => {
           )}
         </Box>
         <Divider />
+        {isLoading && <LinearProgress />}
         {data &&
           data.length > 0 &&
           data.map((anomaly: any, index: number) => {

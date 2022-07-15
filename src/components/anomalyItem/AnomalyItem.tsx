@@ -19,13 +19,19 @@ const setColorChip = (anomaly: string) => {
   if (anomaly === "Mild") return "info";
 };
 export const AnomalyItem = ({ value }: Props) => {
-  const { setAnomaly } = useAnomalyContext();
+  const { setAnomaly, anomaly } = useAnomalyContext();
   const handleClick = () => {
     setAnomaly(value);
   };
 
   return (
-    <Card sx={{ maxWidth: 345, m: 1 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        m: 1,
+        border: anomaly._id === value._id ? "1px solid blue" : "inherit",
+      }}
+    >
       <CardActionArea onClick={handleClick}>
         <CardContent>
           <Grid container>
