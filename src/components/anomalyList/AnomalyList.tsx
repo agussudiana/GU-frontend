@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-import React from "react";
 import { useAnomaly } from "../../hooks/useAnomaly";
 import { useMachineContext } from "../../hooks/useMachineContext";
 import { AnomalyItem } from "../anomalyItem/AnomalyItem";

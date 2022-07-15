@@ -1,5 +1,6 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useEffect } from "react";
+import { useAnomalyContext } from "../../hooks/useAnomalyContext";
 import { useMachine } from "../../hooks/useMachine";
 import { useMachineContext } from "../../hooks/useMachineContext";
 import { ErrorMessage } from "../partial/ErrorMessage";
@@ -7,6 +8,7 @@ import { ErrorMessage } from "../partial/ErrorMessage";
 export const MachineSelector = () => {
   const { data, isLoading, isError } = useMachine();
   const { machine, setMachine } = useMachineContext();
+  const { setAnomaly } = useAnomalyContext();
 
   const handleChange = (e: any) => {
     setMachine(e.target.value);

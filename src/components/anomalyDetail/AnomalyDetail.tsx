@@ -1,6 +1,15 @@
-import { Box, Divider, Grid, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { border } from "@mui/system";
 import { useAnomalyContext } from "../../hooks/useAnomalyContext";
 import { timestampToDate } from "../../utils/helper";
+import { AnomalyForm } from "../anomalyForm/AnomalyForm";
 import { AudioWave } from "../partial/AudioWave";
 
 export const AnomalyDetail = () => {
@@ -11,7 +20,18 @@ export const AnomalyDetail = () => {
   return (
     <Box>
       {Object.keys(anomaly).length === 0 && (
-        <div>please select one of the anomaly</div>
+        <Grid
+          container
+          justifyContent={"center"}
+          alignItems={"center"}
+          sx={{ height: "80vh" }}
+        >
+          <Grid item>
+            <Typography variant="caption">
+              Please Select One of the Anomaly List
+            </Typography>
+          </Grid>
+        </Grid>
       )}
       {Object.keys(anomaly).length > 0 && (
         <>
@@ -37,10 +57,7 @@ export const AnomalyDetail = () => {
               <AudioWave audioUrl={anomaly.soundClip ? audioUrl : ""} />
             </Grid>
             <Grid item xs={12}>
-              <TextField type="text"></TextField>
-              <TextField type="text"></TextField>
-              <TextField type="text"></TextField>
-              <TextField type="text"></TextField>
+              <AnomalyForm />
             </Grid>
           </Grid>
         </>
