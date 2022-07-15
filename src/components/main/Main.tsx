@@ -3,10 +3,13 @@ import React from "react";
 import { AnomalyDetail } from "../anomalyDetail/AnomalyDetail";
 import { AnomalyList } from "../anomalyList/AnomalyList";
 import { MachineSelector } from "../machineSelector/MachineSelector";
+import { HeaderApp } from "../partial/HeaderApp";
 
 export const Main = () => {
   return (
     <Paper>
+      <HeaderApp />
+      <Divider></Divider>
       <Grid container>
         <Grid item xs={12}>
           <MachineSelector />
