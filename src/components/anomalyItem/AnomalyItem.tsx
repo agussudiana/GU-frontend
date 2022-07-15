@@ -30,7 +30,9 @@ export const AnomalyItem = ({ value }: Props) => {
         <CardContent>
           <Grid container>
             <Grid item xs={1}>
-              <div className="anomaly-status-dot"></div>
+              {value.status === "new" && (
+                <div className="anomaly-status-dot"></div>
+              )}
             </Grid>
             <Grid item xs={11}>
               <Typography variant="caption" component={"div"}>

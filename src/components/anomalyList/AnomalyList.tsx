@@ -5,6 +5,10 @@ import { AnomalyItem } from "../anomalyItem/AnomalyItem";
 import { ErrorMessage } from "../partial/ErrorMessage";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
+const countNew = (data: any[]) => {
+  const newData = data.filter((i) => i.status === "new");
+  return newData.length;
+};
 export const AnomalyList = () => {
   const { machine } = useMachineContext();
 
@@ -23,7 +27,9 @@ export const AnomalyList = () => {
         <Divider />
         <Box sx={{ m: 2 }}>
           {data && data.length} Alerts{" "}
-          <Chip size="small" label="2 New" color="info" />
+          {data && data.length && (
+            <Chip size="small" label={countNew(data) + " New"} color="info" />
+          )}
         </Box>
         <Divider />
         {data &&

@@ -22,6 +22,7 @@ interface LinkTabProps {
 function LinkTab(props: LinkTabProps) {
   return (
     <Tab
+      sx={{ height: "64px" }}
       component="a"
       onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
@@ -38,6 +39,7 @@ export const HeaderApp = () => {
         <Toolbar sx={{ alignItems: "flex-end", display: "flex" }}>
           <Box
             sx={{
+              display: "flex",
               height: "64px",
               alignItems: "center",
               justifyContent: "center",
