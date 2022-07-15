@@ -16,7 +16,7 @@ type Props = {
 const setColorChip = (anomaly: string) => {
   if (anomaly === "Severe") return "error";
   if (anomaly === "Moderate") return "warning";
-  if (anomaly === "Mild") return "info";
+  if (anomaly === "Mild") return "success";
 };
 export const AnomalyItem = ({ value }: Props) => {
   const { setAnomaly, anomaly } = useAnomalyContext();
