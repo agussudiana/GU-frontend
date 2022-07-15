@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
 import Spectogram from "wavesurfer.js/src/plugin/spectrogram";
 import colormap from "colormap";
+import { CircularProgress, LinearProgress } from "@mui/material";
 type Props = {
   audioUrl: string;
 };
@@ -14,6 +15,8 @@ const colors = colormap({
 export const AudioWave = ({ audioUrl }: Props) => {
   const waveformRef = useRef<any>();
   const spectoRef = useRef<any>();
+  const [isReady, setIsReady] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (waveformRef.current) {
@@ -35,6 +38,9 @@ export const AudioWave = ({ audioUrl }: Props) => {
           }),
         ],
       });
+      wavesurfer.on("loading", (num: any) => {
+        setProgress(num);
+      });
       if (audioUrl) {
         wavesurfer.load(audioUrl);
       }
@@ -43,6 +49,9 @@ export const AudioWave = ({ audioUrl }: Props) => {
   }, [audioUrl]);
   return (
     <>
+      {progress !== 100 && (
+        <LinearProgress variant="determinate" value={progress} />
+      )}
       <div ref={waveformRef}></div>
       <div ref={spectoRef}></div>
     </>
